@@ -8,8 +8,21 @@
 
 #include <iostream>
 
-int main(int argc, const char * argv[]) {
+#include "SStack.h"
+
+int main(int argc, const char *argv[])
+{
     // insert code here...
-    std::cout << "Hello, World!\n";
+    SStack<char> s = SStack<char>();
+    s.empty();
+    s.push(45);
+    s.push(46);
+    s.push('a');
+    std::cout << s.top() << "\n";
+    s.pop();
+    std::cout << s.top() << "\n";
+    s.pop();
+    std::cout << s.top() << "\n";
+    s.pop();
     return 0;
 }
