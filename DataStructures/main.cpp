@@ -6,13 +6,18 @@
 //  Copyright © 2018 Josep Llodrà Grimalt. All rights reserved.
 //
 
+// #define NDEBUG
+
 #include <iostream>
+#include <vector>
+#include <memory>
 
 #include "SStack.h"
 
 int main(int argc, const char *argv[])
 {
-    // insert code here...
+    // Stack...
+    
     SStack<char> s = SStack<char>();
     s.empty();
     s.push(45);
@@ -23,6 +28,11 @@ int main(int argc, const char *argv[])
     std::cout << s.top() << "\n";
     s.pop();
     std::cout << s.top() << "\n";
-    s.pop();
+    
+    SStack<char> s2 = s;
+    std::cout << s2.top() << "\n";
+    std::cout << s.isEmpty() << "\n";
+    std::cout << s2.isEmpty() << "\n";
+    
     return 0;
 }

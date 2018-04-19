@@ -11,6 +11,7 @@
 
 #include <assert.h>
 #include <vector>
+#include <algorithm>
 
 /* Definition */
 
@@ -18,15 +19,29 @@ template<class T>
 class SStack
 {
 public:
-    SStack(int max = 100) : m_memSpace(max), m_n(-1) {}
-    void empty();
-    void push(const T &item);
-    void pop();
-    T top() const;
-    bool isEmpty() const;
+     SStack(int size = 100)
+     : m_size(size), m_n(-1)
+     {
+          m_memSpace = new T[m_size];
+     }
+     ~SStack()
+     {
+          delete [] m_memSpace;
+     }
+     SStack(const SStack &copy)
+     : m_size(copy.m_size), m_n(copy.m_n), m_memSpace(new T[copy.m_size])
+     {
+          std::copy(copy.m_memSpace, copy.m_memSpace + copy.m_size, m_memSpace);
+     }
+     void empty();
+     void push(const T &item);
+     void pop();
+     T top() const;
+     bool isEmpty() const;
 private:
-    std::vector<T> m_memSpace;
-    int m_n;
+     T *m_memSpace;
+     int m_n;
+     int m_size;
 };
 
 /* Implementation */
