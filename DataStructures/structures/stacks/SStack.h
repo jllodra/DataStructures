@@ -10,7 +10,6 @@
 #define SStack_h
 
 #include <assert.h>
-#include <vector>
 #include <algorithm>
 
 /* Definition */
